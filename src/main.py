@@ -816,10 +816,8 @@ class discord_manager:
     
     def __init__(self):
         self.token = ''
-        self.password = "pass"
+        self.password = "password"
         self.subjank = "sdfija"
-        self.key = "sdao"
-        self.lsps = self.password + self.key
         self.sendlist = []
         self.getlist = []
         self.username = "----"
@@ -828,20 +826,16 @@ class discord_manager:
         self.sample_message = ""
         self.send_msg_now = False
         self.client = discord.Client()
-        self.descrypyzKey = self.lsps.encode()
+        self.descrypyzKey = self.password.encode()
         self.k = pyDes.des(self.descrypyzKey, pyDes.CBC, b"\0\0\0\0\0\0\0\0", pad=None, padmode=pyDes.PAD_PKCS5)
-        self.safetime = lagTimer(15)
+        self.safetime = lagTimer(20)
 
         
         
     def set_discord(self,token,pw):
         self.token = token
         self.password = str(pw)
-        self.lsps = ""
-        for i in range(4):
-            self.lsps += self.password[i]
-            self.lsps += self.key[i]
-        self.descrypyzKey = self.lsps.encode()
+        self.descrypyzKey = self.password.encode()
         self.k = pyDes.des(self.descrypyzKey, pyDes.CBC, b"\0\0\0\0\0\0\0\0", pad=None, padmode=pyDes.PAD_PKCS5)
 
     def jankpass(self,talklist):
@@ -1307,27 +1301,16 @@ class MyFrame(wx.Frame):
 
         #tab2
         panel2_1 = wx.Panel(panel2, wx.ID_ANY, size=(720, 60))
-        panel2_1.SetBackgroundColour(wx.WHITE)
         panel2_2 = wx.Panel(panel2, wx.ID_ANY, size=(720, 40))
-        panel2_2.SetBackgroundColour(wx.WHITE)
-        panel2_3 = wx.Panel(panel2, wx.ID_ANY, size=(720, 40))
-        panel2_3.SetBackgroundColour(wx.WHITE)        
+        panel2_3 = wx.Panel(panel2, wx.ID_ANY, size=(720, 40))       
         panel2_4 = wx.Panel(panel2, wx.ID_ANY, size=(720, 40))
-        panel2_4.SetBackgroundColour(wx.WHITE)
         panel2_5 = wx.Panel(panel2, wx.ID_ANY, size=(720, 180))
-        panel2_5.SetBackgroundColour(wx.WHITE)   
         panel2_6 = wx.Panel(panel2, wx.ID_ANY, size=(720, 40))
-        panel2_6.SetBackgroundColour(wx.WHITE)
         panel2_7 = wx.Panel(panel2, wx.ID_ANY, size=(720, 80))
-        panel2_7.SetBackgroundColour(wx.WHITE)
         panel2_8 = wx.Panel(panel2, wx.ID_ANY, size=(720, 40))
-        panel2_8.SetBackgroundColour(wx.WHITE)   
         panel2_9 = wx.Panel(panel2, wx.ID_ANY, size=(720, 40))
-        panel2_9.SetBackgroundColour(wx.WHITE)   
         panel2_10 = wx.Panel(panel2, wx.ID_ANY, size=(720, 40))
-        panel2_10.SetBackgroundColour(wx.WHITE) 
         panel2_11 = wx.Panel(panel2, wx.ID_ANY, size=(720, 40))
-        panel2_11.SetBackgroundColour(wx.WHITE)   
       
 
         
@@ -2196,7 +2179,7 @@ class MyFrame(wx.Frame):
             num += 1
                 
     def buttonclick5_1(self,event):
-        if len(self.textbox5_2.GetValue()) > 10 and len(self.textbox5_3.GetValue()) == 4:
+        if len(self.textbox5_2.GetValue()) > 10 and len(self.textbox5_3.GetValue()) == 8:
             try:
                 dis.set_discord(self.textbox5_2.GetValue(),self.textbox5_3.GetValue())
                 dis.start_threading_discord()
