@@ -4,6 +4,6 @@ cd /d %~dp0
 
 cd epython
 
-python.exe main.cpython-36.pyc
+python.exe main.py
 
 exit
