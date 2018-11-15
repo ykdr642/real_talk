@@ -2099,7 +2099,7 @@ class MyFrame(wx.Frame):
             num += 1
             
     def buttonclick4_1(self,event):
-        if str.isdecimal(self.textbox4_2.GetValue()):
+        if str.isdecimal(self.textbox4_2.GetValue()) and str.isdecimal(self.textbox4_4.GetValue()):
             num = self.textbox4_2.GetValue()
             r = self.textbox4_4.GetValue()
             getp = user.getBotton(int(num),int(r))
@@ -2109,7 +2109,7 @@ class MyFrame(wx.Frame):
                 if int(ls[0]) == 0:
                     self.listbox4_7.InsertItem(num,"mouse")
                     self.listbox4_7.SetItem(num,1,str(ls[1]))
-                    self.listbox4_7.SetItem(num,2,"x = " + str(ls[2]) + " y = " + str(ls[3]))
+                    self.listbox4_7.SetItem(num,2,"x = " + str(ls[2]) + " y = " + str(ls[3]) + " R = " + str(ls[4]))
                 elif int(ls[0]) == 1:
                     self.listbox4_7.InsertItem(num,"key")
                     self.listbox4_7.SetItem(num,1,str(ls[1]))
