@@ -106,7 +106,7 @@ class cmdmaker:
         
         
     def changeLagTime(self,time):
-        LagTimer.changeLag(time)
+        self.LagTimer.changeLag(time)
     
     def getTaskList(self,tlist):
         time = 0
